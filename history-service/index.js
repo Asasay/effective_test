@@ -41,8 +41,8 @@ app.get("/history", async (req, res) => {
       .findFirst({ where: { plu: plu.toString() } })
       .then((p) => p?.id);
   if (action) conditions.action = action.toString();
-  if (start_date || end_date)
-    conditions.createdAt = { gte: new Date(start_date), lte: new Date(end_date) };
+  if (start_date) conditions.createdAt = { ...conditions.createdAt, gte: new Date(start_date) };
+  if (end_date) conditions.createdAt = { ...conditions.createdAt, lte: new Date(end_date) };
 
   const actions = await prisma.action.findMany({
     where: conditions,
