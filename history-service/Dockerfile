@@ -19,4 +19,4 @@ COPY . .
 EXPOSE 3001
 
 # Seed and then start the application
-CMD ["sh", "-c", "npx prisma migrate deploy && npm run start"]
+CMD ["sh", "-c", "npx prisma migrate deploy && npx prisma generate && npm run start"]

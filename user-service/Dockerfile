@@ -22,4 +22,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Seed and then start the application
-CMD ["sh", "-c", "npx prisma migrate deploy && npm run prisma:seed && npm run start:prod"]
+CMD ["sh", "-c", "npx prisma migrate deploy && npx prisma generate && npm run prisma:seed && npm run start:prod"]
