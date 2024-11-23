@@ -11,7 +11,7 @@ export class UserService {
     });
 
     if (!user) {
-      throw new Error(`User with ID ${userId} not found`);
+      throw new Error('Reset failed');
     }
 
     await this.prisma.user.update({

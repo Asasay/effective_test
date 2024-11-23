@@ -14,11 +14,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Action {
+model Action_history {
   id        Int      @id @default(autoincrement())
-  action    String
+  action    Action
   productId Int
   storeId   Int
   details   Json
   createdAt DateTime @default(now())
+}
+
+enum Action {
+  balance_create
+  balance_increase
+  balance_decrease
 }

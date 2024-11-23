@@ -17,7 +17,7 @@ async function listenToQueue() {
   channel.consume(queue, async (msg) => {
     const action = JSON.parse(msg.content.toString());
     console.log(action);
-    await prisma.action.create({
+    await prisma.action_history.create({
       data: {
         action: action.action,
         productId: action.details.productId,
@@ -44,7 +44,7 @@ app.get("/history", async (req, res) => {
   if (start_date) conditions.createdAt = { ...conditions.createdAt, gte: new Date(start_date) };
   if (end_date) conditions.createdAt = { ...conditions.createdAt, lte: new Date(end_date) };
 
-  const actions = await prisma.action.findMany({
+  const actions = await prisma.action_history.findMany({
     where: conditions,
     skip,
     take,

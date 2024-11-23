@@ -5,7 +5,9 @@
   "dependencies": {
     "@prisma/client": "^5.22.0",
     "amqplib": "^0.10.4",
-    "express": "^4.21.1",
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
     "prisma": "^5.22.0"
   }
 }
